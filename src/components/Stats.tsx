@@ -6,14 +6,14 @@ export function Stats() {
 
   return (
     <div className="card stats">
-      <h3>Stats do servidor</h3>
+      <h3>Server stats</h3>
       <p>
-        Total de requests <code>getUser</code>:{' '}
+        Total <code>getUser</code> requests:{' '}
         <strong>{data?.fetchCount ?? '…'}</strong>
       </p>
       <p className="muted">
-        Se dedup funciona, abrir 2 componentes que usam a mesma key não
-        deve aumentar esse contador em mais de 1 por revalidação.
+        If dedup works, opening 2 components that use the same key shouldn't
+        increase this counter by more than 1 per revalidation.
       </p>
     </div>
   );

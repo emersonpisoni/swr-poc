@@ -7,15 +7,15 @@ export function UserProfile() {
     getUser
   );
 
-  if (error) return <div className="card error">Erro ao carregar.</div>;
-  if (isLoading) return <div className="card">Carregando…</div>;
+  if (error) return <div className="card error">Failed to load.</div>;
+  if (isLoading) return <div className="card">Loading…</div>;
   if (!data) return null;
 
   const handleEditBio = async () => {
-    const novoBio = `Bio editada às ${new Date().toLocaleTimeString()}`;
+    const newBio = `Bio edited at ${new Date().toLocaleTimeString()}`;
 
-    await mutate(updateUser({ bio: novoBio }), {
-      optimisticData: { ...data, bio: novoBio },
+    await mutate(updateUser({ bio: newBio }), {
+      optimisticData: { ...data, bio: newBio },
       rollbackOnError: true,
       populateCache: true,
       revalidate: false,
@@ -26,7 +26,7 @@ export function UserProfile() {
     <div className="card">
       <div className="card-header">
         <h2>UserProfile</h2>
-        {isValidating && <span className="badge">revalidando…</span>}
+        {isValidating && <span className="badge">revalidating…</span>}
       </div>
       <p><strong>{data.name}</strong></p>
       <p>{data.email}</p>
@@ -34,7 +34,7 @@ export function UserProfile() {
       <p className="muted">updatedAt: {data.updatedAt}</p>
       <div className="row">
         <button onClick={() => mutate()}>Refetch (revalidate)</button>
-        <button onClick={handleEditBio}>Editar bio (optimistic)</button>
+        <button onClick={handleEditBio}>Edit bio (optimistic)</button>
       </div>
     </div>
   );

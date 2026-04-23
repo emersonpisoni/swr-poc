@@ -21,20 +21,20 @@ export default function App() {
         <section>
           <h2>1. Cache + dedup</h2>
           <p className="muted">
-            Dois componentes (header e card abaixo) usam a key{' '}
-            <code>'user'</code>. Apenas 1 request é feita.
+            Two components (header and card below) use the key{' '}
+            <code>'user'</code>. Only 1 request is made.
           </p>
           <UserProfile />
         </section>
 
         <section>
-          <h2>2. Revalidação</h2>
+          <h2>2. Revalidation</h2>
           <ol>
-            <li>Mude para outra aba e volte → fetch automático em foco.</li>
-            <li>Clique em <em>Refetch</em> → revalidação manual.</li>
+            <li>Switch to another tab and come back → automatic fetch on focus.</li>
+            <li>Click <em>Refetch</em> → manual revalidation.</li>
             <li>
-              Note que o dado <strong>não some</strong> durante a revalidação —
-              só o badge "revalidando…" aparece. Isso é stale-while-revalidate.
+              Note the data <strong>doesn't disappear</strong> during revalidation —
+              only the "revalidating…" badge shows. That's stale-while-revalidate.
             </li>
           </ol>
         </section>
@@ -42,8 +42,8 @@ export default function App() {
         <section>
           <h2>3. Optimistic update</h2>
           <p className="muted">
-            Clique em <em>Editar bio</em>: a bio muda <strong>instantânea</strong>{' '}
-            (otimista). Em paralelo, o "servidor" leva 1.2s. Se falhar, reverte.
+            Click <em>Edit bio</em>: the bio changes <strong>instantly</strong>{' '}
+            (optimistic). In parallel, the "server" takes 1.2s. If it fails, it rolls back.
           </p>
         </section>
 
